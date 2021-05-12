@@ -2,12 +2,14 @@ import numpy as np
 import pygame
 import sys
 import math
+pygame.font.init()
 
 # COLORS
 blue = (0,0,255)
 black = (0,0,0)
 red = (255,0,0)
 yellow = (255,255,0)
+white = (255,255,255)
 
 # ROW AND COLUMN COUNT
 row_count = 6
@@ -89,8 +91,6 @@ def main():
     game_over = False
     turn = 0
 
-    pygame.init()
-
     draw_board(board)
     pygame.display.update()
 
@@ -147,6 +147,26 @@ def main():
                 turn %= 2 # This alternate between the numbers 1 and 0
 
                 if game_over:
-                    pygame.time.wait(3000)
+                    pygame.time.wait(2000)
 
-main()
+def main_menu():
+    run = True
+
+    while run:
+        screen.fill((0,0,0))
+        font = pygame.font.SysFont('monospace', 80)
+        text = font.render('Click to Play', 1, white)
+        screen.blit(text, (width/2 - text.get_width()/2, height/2 - text.get_height()/2))
+        pygame.display.update()
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                run = False
+            
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                run = False
+    main()
+
+while True:
+    main_menu()
