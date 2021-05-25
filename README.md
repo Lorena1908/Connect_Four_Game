@@ -1,4 +1,4 @@
-# Connect_Four_Game
+# Connect Four Game
 This is a simple connect four game
 
 ## Setup
