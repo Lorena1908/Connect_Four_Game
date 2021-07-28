@@ -149,7 +149,7 @@ def main():
                     player2.draw()
             pygame.display.update()
 
-            if event.type == pygame.MOUSEBUTTONDOWN:
+            if pygame.mouse.get_pressed(num_buttons=3)[0]:
                 pygame.draw.rect(win, (0,0,0), (0,0, width, square))
                 player1 = Circle(350, 50, (255,0,0))
                 player2 = Circle(350, 50, (255,255,0))
